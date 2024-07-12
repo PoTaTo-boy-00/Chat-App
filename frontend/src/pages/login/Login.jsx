@@ -1,49 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import useLogin from "../../hooks/useLogin";
+import toast from "react-hot-toast";
 
-const login = () => {
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { loading, login } = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login(username, password);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto ">
       <div
         className="p-6 h-full w-full bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100
 "
       >
-        <h1 className="text-3xl font-semibold text-center text-gray-300">
+        <h1 className="text-3xl font-semibold text-center text-green-400">
           Login
-          <span className="text-green-500"> Chat</span>
         </h1>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
-            <label className="label p-2">
-              <span className="text-base label-text">Username</span>
-            </label>
+            <label className="label p-2" />
+
             <input
               type="text"
               placeholder="Enter Username"
-              className="w-full input input-bordered h-10"
+              className="input input-bordered w-full max-w-xs"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>
-            <label className="label p-2">
-              <span className="text-base label-text">Password</span>
-            </label>
+            <label className="label p-2" />
+
             <input
               type="text"
               placeholder="Enter Password"
               className="input input-bordered w-full max-w-xs"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          <a
-            href="#"
-            className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+          <Link
+            to="/signup"
+            className="text-sm  text-black hover:underline hover:text-blue-600 mt-2 inline-block"
           >
             Don't have an account?
-          </a>
+          </Link>
 
-          <div>
-            <button class="w-full h-12 text-white font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer">
-              Login
+          <div className="label p-2 justify-center">
+            <button
+              class=" relative px-8 py-2 rounded-md bg-slate-200 text-slate-600 isolation-auto z-10 border-2 border-lime-500 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-lime-500 before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "Login"
+              )}
             </button>
           </div>
         </form>
@@ -52,4 +76,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
