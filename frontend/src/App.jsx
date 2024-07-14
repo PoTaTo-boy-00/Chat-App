@@ -1,10 +1,10 @@
-import "./App.css";
-import Login from "./pages/login/Login.jsx";
-import Signup from "../src/pages/signup/Signup.jsx";
-import Home from "../src/pages/home/Home.jsx";
 import { Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import SignUp from "./pages/signup/Signup";
 import { Toaster } from "react-hot-toast";
-import { useAuthContext } from "./context/authContext.jsx";
+import { useAuthContext } from "./context/authContext";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -21,7 +21,7 @@ function App() {
         />
         <Route
           path="/signup"
-          element={authUser ? <Navigate to="/" /> : <Signup />}
+          element={authUser ? <Navigate to="/" /> : <SignUp />}
         />
       </Routes>
       <Toaster />

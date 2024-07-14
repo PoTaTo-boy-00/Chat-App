@@ -12,10 +12,8 @@ import connectToDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
 
 dotenv.config();
-
-const PORT = process.env.PORT;
-
 const __dirname = path.resolve();
+const PORT = process.env.PORT;
 
 app.use(express.json()); //to parse the incoming request from req.body
 app.use(cookieParser()); //to parse the incoming request from cookies
