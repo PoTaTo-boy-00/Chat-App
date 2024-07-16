@@ -15,7 +15,7 @@ const Login = () => {
       toast.error(error.message);
     }
   };
-  console.log({ username, password });
+  // console.log({ username, password });
 
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto ">
@@ -43,7 +43,7 @@ const Login = () => {
             <label className="label p-2" />
 
             <input
-              type="text"
+              type="password"
               placeholder="Enter Password"
               className="input input-bordered w-full max-w-xs"
               value={password}
