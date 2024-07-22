@@ -41,6 +41,10 @@ function handleInputErrors(username, password) {
     toast.error("Please fill all the fields");
     return false;
   }
+  if (!username && !password) {
+    toast.error("Invalid Credentials");
+    return false;
+  }
 
   return true;
 }
