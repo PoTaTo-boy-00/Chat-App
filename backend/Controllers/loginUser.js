@@ -13,7 +13,7 @@ export const loginUser = async (req, res) => {
       userExist?.password || ""
     );
     if (!userExist || !correctPassword) {
-      return res.status(400).json({ message: "Invalid Credentials" });
+      return res.redirect("/api/auth");
     }
     generateTokenandSetCookie(userExist._id, res);
 
