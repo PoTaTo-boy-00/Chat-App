@@ -10,8 +10,3 @@ https://chat-app-n4z2.onrender.com/
 Note:
 This application is still being built and some bugs may not have been fixed.
 So you are requested to open the link in Incognito mode as there might be some issues with Authentication.
-
-Future Plans for this application inculdes:
-1) Video Conferencing using webRTC.
-2) File Upload feature.
-3) Voice messaging.
